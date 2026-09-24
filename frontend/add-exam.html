@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Exam - Adaptive Online Exam</title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+
+        /* ================= HEADER ================= */
+
+        header {
+
+            min-height: 70px;
+
+            background: #ffffff;
+
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            padding: 12px 35px;
+
+            gap: 20px;
+
+        }
+
+
+        /* ================= LOGO ================= */
+
+        .logo {
+
+            font-size: 22px;
+
+            font-weight: 700;
+
+            color: #2563eb;
+
+            white-space: nowrap;
+
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+
+        /* ================= ADMIN NAVIGATION ================= */
+
+        .admin-nav {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 8px;
+
+            flex-wrap: wrap;
+
+        }
+
+
+        .nav-button {
+
+            text-decoration: none;
+
+            border: none;
+
+            background: transparent;
+
+            color: #374151;
+
+            padding: 9px 13px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            transition: 0.2s;
+
+            white-space: nowrap;
+
+        }
+
+
+        .nav-button:hover {
+
+            background: #eef2ff;
+
+            color: #2563eb;
+
+        }
+
+
+        .nav-button.active {
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+        }
+
+
+        /* ================= ADMIN INFO ================= */
+
+        .admin-info {
+
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .welcome-text {
+
+            font-size: 14px;
+
+            color: #6b7280;
+
+            white-space: nowrap;
+
+        }
+
+
+        .admin-avatar {
+
+            width: 40px;
+
+            height: 40px;
+
+            border-radius: 50%;
+
+            background: #111827;
+
+            color: #ffffff;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-weight: bold;
+
+        }
+
+
+        .logout-button {
+
+            border: none;
+
+            background: #fee2e2;
+
+            color: #dc2626;
+
+            padding: 9px 15px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+            white-space: nowrap;
+
+        }
+
+
+        .logout-button:hover {
+
+            background: #fecaca;
+
+        }
+
+
+        /* ================= MAIN ================= */
+
+        main {
+
+            max-width: 800px;
+
+            margin: 0 auto;
+
+            padding: 40px 25px;
+
+        }
+
+
+        .page-title {
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .page-title h1 {
+
+            margin: 0 0 8px;
+
+            font-size: 28px;
+
+            color: #111827;
+
+        }
+
+
+        .page-title p {
+
+            margin: 0;
+
+            color: #6b7280;
+
+            font-size: 14px;
+
+        }
+
+
+        /* ================= FORM CARD ================= */
+
+        .form-card {
+
+            background: #ffffff;
+
+            border: 1px solid #e5e7eb;
+
+            border-radius: 12px;
+
+            padding: 30px;
+
+            box-shadow:
+                0 3px 10px
+                rgba(0, 0, 0, 0.04);
+
+        }
+
+
+        .form-group {
+
+            margin-bottom: 20px;
+
+        }
+
+
+        label {
+
+            display: block;
+
+            margin-bottom: 8px;
+
+            font-size: 14px;
+
+            font-weight: 600;
+
+            color: #374151;
+
+        }
+
+
+        input,
+        textarea,
+        select {
+
+            width: 100%;
+
+            padding: 12px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 7px;
+
+            font-size: 14px;
+
+            font-family: inherit;
+
+            outline: none;
+
+        }
+
+
+        input:focus,
+        textarea:focus,
+        select:focus {
+
+            border-color: #2563eb;
+
+        }
+
+
+        textarea {
+
+            min-height: 110px;
+
+            resize: vertical;
+
+        }
+
+
+        .form-row {
+
+            display: grid;
+
+            grid-template-columns: 1fr 1fr;
+
+            gap: 20px;
+
+        }
+
+
+        /* ================= BUTTONS ================= */
+
+        .button-row {
+
+            display: flex;
+
+            justify-content: flex-end;
+
+            gap: 12px;
+
+            margin-top: 25px;
+
+        }
+
+
+        .cancel-button {
+
+            border: 1px solid #d1d5db;
+
+            background: #ffffff;
+
+            color: #374151;
+
+            padding: 11px 20px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+        }
+
+
+        .cancel-button:hover {
+
+            background: #f3f4f6;
+
+        }
+
+
+        .save-button {
+
+            border: none;
+
+            background: #2563eb;
+
+            color: #ffffff;
+
+            padding: 11px 20px;
+
+            border-radius: 7px;
+
+            cursor: pointer;
+
+            font-weight: 600;
+
+        }
+
+
+        .save-button:hover {
+
+            background: #1d4ed8;
+
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            margin-top: 10px;
+
+            color: #9ca3af;
+
+            font-size: 13px;
+
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 950px) {
+
+            header {
+
+                flex-direction: column;
+
+                padding: 18px 20px;
+
+            }
+
+
+            .admin-nav {
+
+                order: 3;
+
+                width: 100%;
+
+            }
+
+
+            .admin-info {
+
+                order: 2;
+
+            }
+
+        }
+
+
+        @media (max-width: 600px) {
+
+            .form-row {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .form-card {
+
+                padding: 20px;
+
+            }
+
+
+            .admin-nav {
+
+                gap: 4px;
+
+            }
+
+
+            .nav-button {
+
+                font-size: 12px;
+
+                padding: 8px 9px;
+
+            }
+
+
+            .welcome-text {
+
+                display: none;
+
+            }
+
+
+            main {
+
+                padding: 25px 15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= HEADER ================= -->
+
+     <header style="
+        min-height:70px;
+        background:#ffffff;
+        border-bottom:1px solid #e5e7eb;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:10px 35px;
+        box-sizing:border-box;
+        gap:20px;
+        flex-wrap:wrap;
+    ">
+
+
+        <!-- =====================================================
+             LOGO
+        ====================================================== -->
+
+        <a
+            href="admin_dashboard.html"
+            style="
+                text-decoration:none;
+                font-size:22px;
+                font-weight:700;
+                color:#2563eb;
+                white-space:nowrap;
+            "
+        >
+
+            Adaptive<span style="color:#111827;">Exam</span>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             ADMIN NAVIGATION
+        ====================================================== -->
+
+        <nav style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:5px;
+            flex-wrap:wrap;
+            flex:1;
+        ">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="admin_dashboard.html"
+                style="
+                    text-decoration:none;
+                    color:#2563eb;
+                    background:#eff6ff;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+            >
+
+                Dashboard
+
+            </a>
+
+
+
+            <!-- ADD EXAM -->
+
+            <a
+                href="add-exam.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Add Exam
+
+            </a>
+
+
+
+            <!-- ADD QUESTION -->
+
+            <a
+                href="add_question.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Add Question
+
+            </a>
+
+
+
+            <!-- MANAGE QUESTIONS -->
+
+            <a
+                href="manage_questions.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Manage Questions
+
+            </a>
+
+
+
+            <!-- STUDENTS -->
+
+            <a
+                href="student_details.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Students
+
+            </a>
+
+
+
+            <!-- RESULTS -->
+
+            <a
+                href="results.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Results
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =====================================================
+             ADMIN INFORMATION
+        ====================================================== -->
+
+        <div style="
+            display:flex;
+            align-items:center;
+            gap:15px;
+            white-space:nowrap;
+        ">
+
+
+            <span style="
+                font-size:14px;
+                color:#6b7280;
+            ">
+
+                Welcome, Admin
+
+            </span>
+
+
+
+            <!-- ADMIN AVATAR -->
+
+            <div style="
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                background:#111827;
+                color:#ffffff;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-weight:bold;
+            ">
+
+                A
+
+            </div>
+
+
+
+            <!-- LOGOUT -->
+
+            <button
+                onclick="logout()"
+                style="
+                    border:none;
+                    background:#fee2e2;
+                    color:#dc2626;
+                    padding:9px 16px;
+                    border-radius:7px;
+                    cursor:pointer;
+                    font-weight:600;
+                "
+            >
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main>
+
+
+        <!-- PAGE TITLE -->
+
+        <div class="page-title">
+
+            <h1>
+                Add New Exam
+            </h1>
+
+            <p>
+                Create a new examination for students.
+            </p>
+
+        </div>
+
+
+
+        <!-- FORM -->
+
+        <div class="form-card">
+
+
+            <form
+                action="../backend/admin/add-exam.php"
+                method="POST"
+            >
+
+
+                <!-- EXAM NAME -->
+
+                <div class="form-group">
+
+                    <label for="exam_name">
+                        Exam Name
+                    </label>
+
+
+                    <input
+                        type="text"
+                        id="exam_name"
+                        name="exam_name"
+                        placeholder="Example: Java Programming"
+                        required
+                    >
+
+                </div>
+
+
+
+                <!-- DESCRIPTION -->
+
+                <div class="form-group">
+
+                    <label for="description">
+                        Description
+                    </label>
+
+
+                    <textarea
+                        id="description"
+                        name="description"
+                        placeholder="Enter a short description of the exam"
+                        required
+                    ></textarea>
+
+                </div>
+
+
+
+                <!-- DURATION + QUESTIONS -->
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label for="duration">
+                            Duration (Minutes)
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="duration"
+                            name="duration"
+                            placeholder="Example: 30"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+
+
+                    <div class="form-group">
+
+                        <label for="total_questions">
+                            Total Questions
+                        </label>
+
+
+                        <input
+                            type="number"
+                            id="total_questions"
+                            name="total_questions"
+                            placeholder="Example: 10"
+                            min="1"
+                            required
+                        >
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- STATUS -->
+
+                <div class="form-group">
+
+                    <label for="status">
+                        Status
+                    </label>
+
+
+                    <select
+                        id="status"
+                        name="status"
+                        required
+                    >
+
+                        <option value="Active">
+                            Active
+                        </option>
+
+
+                        <option value="Inactive">
+                            Inactive
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+
+                <!-- BUTTONS -->
+
+                <div class="button-row">
+
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="window.location.href='admin_dashboard.html'"
+                    >
+                        Cancel
+                    </button>
+
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        Save Exam
+                    </button>
+
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+    </main>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        © 2026 Adaptive Online Exam System
+
+    </footer>
+
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+
+        function logout() {
+
+            const confirmLogout =
+                confirm(
+                    "Are you sure you want to logout?"
+                );
+
+
+            if (confirmLogout) {
+
+                /*
+                 * Your admin logout PHP file
+                 * is inside backend/admin/auth in your
+                 * earlier structure, but your screenshot
+                 * shows logout.php under backend/auth.
+                 *
+                 * Therefore this uses backend/auth/logout.php.
+                 */
+
+                window.location.href =
+                    "../backend/auth/logout.php";
+
+            }
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
+```

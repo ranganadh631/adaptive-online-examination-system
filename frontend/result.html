@@ -1,0 +1,703 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Result - Adaptive Online Exam</title>
+</head>
+
+<body style="
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fb;
+    color:#1f2937;
+">
+
+    <!-- ================= HEADER ================= -->
+
+    <header style="
+        height:70px;
+        background:#ffffff;
+        border-bottom:1px solid #e5e7eb;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:0 40px;
+        box-sizing:border-box;
+    ">
+
+        <!-- Logo -->
+
+        <div style="
+            font-size:22px;
+            font-weight:700;
+            color:#2563eb;
+        ">
+
+           <i class="bi bi-mortarboard-fill"></i> Adaptive<span style="color:#111827;">Exam</span>
+        </div>
+
+
+        <!-- Exam Name -->
+
+        <div style="
+            font-size:15px;
+            font-weight:600;
+            color:#374151;
+        ">
+            Java Programming
+        </div>
+
+
+        <!-- Student -->
+
+        <div style="
+            display:flex;
+            align-items:center;
+            gap:10px;
+        ">
+
+            <div style="
+                width:38px;
+                height:38px;
+                border-radius:50%;
+                background:#2563eb;
+                color:#ffffff;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-weight:bold;
+            ">
+                B
+            </div>
+
+            <span style="
+                font-size:14px;
+                color:#374151;
+            ">
+                Badri
+            </span>
+
+        </div>
+
+    </header>
+
+
+    <!-- ================= MAIN ================= -->
+
+    <main style="
+        max-width:950px;
+        margin:0 auto;
+        padding:35px 20px;
+    ">
+
+
+        <!-- Result Heading -->
+
+        <div style="
+            text-align:center;
+            margin-bottom:30px;
+        ">
+
+            <div style="
+                width:70px;
+                height:70px;
+                border-radius:50%;
+                background:#dcfce7;
+                color:#16a34a;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                margin:0 auto 15px auto;
+                font-size:32px;
+            ">
+                ✓
+            </div>
+
+
+            <h1 style="
+                margin:0 0 8px 0;
+                font-size:28px;
+                color:#111827;
+            ">
+                Exam Completed!
+            </h1>
+
+
+            <p style="
+                margin:0;
+                color:#6b7280;
+                font-size:14px;
+            ">
+                Your Java Programming exam has been submitted successfully.
+            </p>
+
+        </div>
+
+
+        <!-- ================= SCORE CARD ================= -->
+
+        <div style="
+            background:#ffffff;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            padding:30px;
+            box-shadow:0 4px 12px rgba(0,0,0,0.04);
+            margin-bottom:20px;
+        ">
+
+            <div style="
+                text-align:center;
+            ">
+
+                <p style="
+                    margin:0 0 8px 0;
+                    color:#6b7280;
+                    font-size:14px;
+                ">
+                    Your Score
+                </p>
+
+
+                <div style="
+                    font-size:52px;
+                    font-weight:700;
+                    color:#2563eb;
+                    margin-bottom:8px;
+                ">
+                    80%
+                </div>
+
+
+                <div style="
+                    display:inline-block;
+                    background:#dcfce7;
+                    color:#16a34a;
+                    padding:7px 15px;
+                    border-radius:20px;
+                    font-size:13px;
+                    font-weight:600;
+                ">
+                    Good Performance
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= STATISTICS ================= -->
+
+        <div style="
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:15px;
+            margin-bottom:20px;
+        ">
+
+
+            <!-- Total -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:10px;
+                padding:20px;
+                text-align:center;
+            ">
+
+                <div style="
+                    font-size:24px;
+                    font-weight:700;
+                    color:#111827;
+                ">
+                    10
+                </div>
+
+                <div style="
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-top:5px;
+                ">
+                    Total Questions
+                </div>
+
+            </div>
+
+
+            <!-- Correct -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:10px;
+                padding:20px;
+                text-align:center;
+            ">
+
+                <div style="
+                    font-size:24px;
+                    font-weight:700;
+                    color:#16a34a;
+                ">
+                    8
+                </div>
+
+                <div style="
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-top:5px;
+                ">
+                    Correct
+                </div>
+
+            </div>
+
+
+            <!-- Wrong -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:10px;
+                padding:20px;
+                text-align:center;
+            ">
+
+                <div style="
+                    font-size:24px;
+                    font-weight:700;
+                    color:#dc2626;
+                ">
+                    2
+                </div>
+
+                <div style="
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-top:5px;
+                ">
+                    Wrong
+                </div>
+
+            </div>
+
+
+            <!-- Ability -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:10px;
+                padding:20px;
+                text-align:center;
+            ">
+
+                <div style="
+                    font-size:24px;
+                    font-weight:700;
+                    color:#f59e0b;
+                ">
+                    78
+                </div>
+
+                <div style="
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-top:5px;
+                ">
+                    Ability Score
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= ADAPTIVE PERFORMANCE ================= -->
+
+        <div style="
+            background:#ffffff;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            padding:25px;
+            margin-bottom:20px;
+        ">
+
+            <h2 style="
+                margin:0 0 18px 0;
+                font-size:19px;
+                color:#111827;
+            ">
+                Adaptive Performance
+            </h2>
+
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:10px;
+            ">
+
+                <span style="
+                    font-size:14px;
+                    color:#374151;
+                ">
+                    Overall Performance
+                </span>
+
+                <span style="
+                    font-size:14px;
+                    font-weight:600;
+                    color:#2563eb;
+                ">
+                    80%
+                </span>
+
+            </div>
+
+
+            <!-- Progress -->
+
+            <div style="
+                width:100%;
+                height:9px;
+                background:#e5e7eb;
+                border-radius:10px;
+                overflow:hidden;
+                margin-bottom:20px;
+            ">
+
+                <div style="
+                    width:80%;
+                    height:100%;
+                    background:#2563eb;
+                    border-radius:10px;
+                "></div>
+
+            </div>
+
+
+            <div style="
+                background:#eff6ff;
+                border:1px solid #bfdbfe;
+                border-radius:8px;
+                padding:13px 15px;
+                color:#1e40af;
+                font-size:13px;
+                line-height:1.5;
+            ">
+
+                <strong>Adaptive Analysis:</strong>
+                Your performance improved during the examination.
+                The system increased the question difficulty based on
+                your correct answers.
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= TOPIC PERFORMANCE ================= -->
+
+        <div style="
+            background:#ffffff;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            padding:25px;
+            margin-bottom:25px;
+        ">
+
+            <h2 style="
+                margin:0 0 20px 0;
+                font-size:19px;
+                color:#111827;
+            ">
+                Topic Performance
+            </h2>
+
+
+            <!-- OOP -->
+
+            <div style="margin-bottom:18px;">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    margin-bottom:7px;
+                ">
+
+                    <span style="
+                        font-size:14px;
+                        color:#374151;
+                    ">
+                        Object Oriented Programming
+                    </span>
+
+                    <span style="
+                        font-size:13px;
+                        font-weight:600;
+                        color:#16a34a;
+                    ">
+                        90%
+                    </span>
+
+                </div>
+
+
+                <div style="
+                    height:8px;
+                    background:#e5e7eb;
+                    border-radius:10px;
+                    overflow:hidden;
+                ">
+
+                    <div style="
+                        width:90%;
+                        height:100%;
+                        background:#16a34a;
+                        border-radius:10px;
+                    "></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Collections -->
+
+            <div style="margin-bottom:18px;">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    margin-bottom:7px;
+                ">
+
+                    <span style="
+                        font-size:14px;
+                        color:#374151;
+                    ">
+                        Collections
+                    </span>
+
+                    <span style="
+                        font-size:13px;
+                        font-weight:600;
+                        color:#2563eb;
+                    ">
+                        80%
+                    </span>
+
+                </div>
+
+
+                <div style="
+                    height:8px;
+                    background:#e5e7eb;
+                    border-radius:10px;
+                    overflow:hidden;
+                ">
+
+                    <div style="
+                        width:80%;
+                        height:100%;
+                        background:#2563eb;
+                        border-radius:10px;
+                    "></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Exception Handling -->
+
+            <div style="margin-bottom:18px;">
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    margin-bottom:7px;
+                ">
+
+                    <span style="
+                        font-size:14px;
+                        color:#374151;
+                    ">
+                        Exception Handling
+                    </span>
+
+                    <span style="
+                        font-size:13px;
+                        font-weight:600;
+                        color:#f59e0b;
+                    ">
+                        60%
+                    </span>
+
+                </div>
+
+
+                <div style="
+                    height:8px;
+                    background:#e5e7eb;
+                    border-radius:10px;
+                    overflow:hidden;
+                ">
+
+                    <div style="
+                        width:60%;
+                        height:100%;
+                        background:#f59e0b;
+                        border-radius:10px;
+                    "></div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Weak Topic -->
+
+            <div>
+
+                <div style="
+                    display:flex;
+                    justify-content:space-between;
+                    margin-bottom:7px;
+                ">
+
+                    <span style="
+                        font-size:14px;
+                        color:#374151;
+                    ">
+                        Multithreading
+                    </span>
+
+                    <span style="
+                        font-size:13px;
+                        font-weight:600;
+                        color:#dc2626;
+                    ">
+                        40%
+                    </span>
+
+                </div>
+
+
+                <div style="
+                    height:8px;
+                    background:#e5e7eb;
+                    border-radius:10px;
+                    overflow:hidden;
+                ">
+
+                    <div style="
+                        width:40%;
+                        height:100%;
+                        background:#dc2626;
+                        border-radius:10px;
+                    "></div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- ================= RECOMMENDATION ================= -->
+
+        <div style="
+            background:#fff7ed;
+            border:1px solid #fed7aa;
+            border-radius:10px;
+            padding:16px 18px;
+            margin-bottom:25px;
+        ">
+
+            <div style="
+                font-size:14px;
+                font-weight:700;
+                color:#c2410c;
+                margin-bottom:5px;
+            ">
+                Recommendation
+            </div>
+
+            <div style="
+                font-size:13px;
+                color:#7c2d12;
+                line-height:1.5;
+            ">
+                Your weakest area is Multithreading.
+                Practice more questions from this topic
+                to improve your performance.
+            </div>
+
+        </div>
+
+
+        <!-- ================= BUTTONS ================= -->
+
+        <div style="
+            display:flex;
+            justify-content:center;
+            gap:12px;
+        ">
+
+            <button
+    onclick="window.location.href='student_dashboard.html';"
+    style="
+        padding:12px 22px;
+        border:1px solid #d1d5db;
+        background:#ffffff;
+        color:#374151;
+        border-radius:7px;
+        font-size:14px;
+        font-weight:600;
+        cursor:pointer;
+    "
+>
+    ← Dashboard
+</button>
+
+
+            <button
+                onclick="window.location.href='exam.html'"
+                style="
+                    padding:12px 22px;
+                    border:none;
+                    background:#2563eb;
+                    color:#ffffff;
+                    border-radius:7px;
+                    font-size:14px;
+                    font-weight:600;
+                    cursor:pointer;
+                "
+            >
+                Take Another Exam
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer style="
+        text-align:center;
+        padding:25px;
+        margin-top:10px;
+        color:#9ca3af;
+        font-size:13px;
+    ">
+        © 2026 Adaptive Online Exam System
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,1574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Manage Questions - Adaptive Online Exam
+    </title>
+
+</head>
+
+
+<body style="
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fb;
+    color:#1f2937;
+">
+
+
+<!-- ========================================================= -->
+<!-- HEADER -->
+<!-- ========================================================= -->
+
+  <header style="
+        min-height:70px;
+        background:#ffffff;
+        border-bottom:1px solid #e5e7eb;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:10px 35px;
+        box-sizing:border-box;
+        gap:20px;
+        flex-wrap:wrap;
+    ">
+
+
+        <!-- =====================================================
+             LOGO
+        ====================================================== -->
+
+        <a
+            href="admin_dashboard.html"
+            style="
+                text-decoration:none;
+                font-size:22px;
+                font-weight:700;
+                color:#2563eb;
+                white-space:nowrap;
+            "
+        >
+
+            Adaptive<span style="color:#111827;">Exam</span>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             ADMIN NAVIGATION
+        ====================================================== -->
+
+        <nav style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:5px;
+            flex-wrap:wrap;
+            flex:1;
+        ">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="admin_dashboard.html"
+                style="
+                    text-decoration:none;
+                    color:#2563eb;
+                    background:#eff6ff;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+            >
+
+                Dashboard
+
+            </a>
+
+
+
+            <!-- ADD EXAM -->
+
+            <a
+                href="add-exam.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Add Exam
+
+            </a>
+
+
+
+            <!-- ADD QUESTION -->
+
+            <a
+                href="add_question.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Add Question
+
+            </a>
+
+
+
+            <!-- MANAGE QUESTIONS -->
+
+            <a
+                href="manage_questions.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Manage Questions
+
+            </a>
+
+
+
+            <!-- STUDENTS -->
+
+            <a
+                href="student_details.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Students
+
+            </a>
+
+
+
+            <!-- RESULTS -->
+
+            <a
+                href="results.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Results
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =====================================================
+             ADMIN INFORMATION
+        ====================================================== -->
+
+        <div style="
+            display:flex;
+            align-items:center;
+            gap:15px;
+            white-space:nowrap;
+        ">
+
+
+            <span style="
+                font-size:14px;
+                color:#6b7280;
+            ">
+
+                Welcome, Admin
+
+            </span>
+
+
+
+            <!-- ADMIN AVATAR -->
+
+            <div style="
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                background:#111827;
+                color:#ffffff;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-weight:bold;
+            ">
+
+                A
+
+            </div>
+
+
+
+            <!-- LOGOUT -->
+
+            <button
+                onclick="logout()"
+                style="
+                    border:none;
+                    background:#fee2e2;
+                    color:#dc2626;
+                    padding:9px 16px;
+                    border-radius:7px;
+                    cursor:pointer;
+                    font-weight:600;
+                "
+            >
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </header>
+
+
+
+<!-- ========================================================= -->
+<!-- MAIN -->
+<!-- ========================================================= -->
+
+<main style="
+    max-width:1200px;
+    margin:0 auto;
+    padding:35px 25px;
+">
+
+
+    <!-- ===================================================== -->
+    <!-- PAGE HEADER -->
+    <!-- ===================================================== -->
+
+    <div style="
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:25px;
+    ">
+
+
+        <div>
+
+            <h1 style="
+                margin:0 0 7px 0;
+                font-size:27px;
+                color:#111827;
+            ">
+                Manage Questions
+            </h1>
+
+
+            <p style="
+                margin:0;
+                color:#6b7280;
+                font-size:14px;
+            ">
+                Add, edit and manage questions for adaptive exams.
+            </p>
+
+        </div>
+
+
+        <!-- ADD QUESTION -->
+
+        <button
+            onclick="window.location.href='add_question.html'"
+            style="
+                border:none;
+                background:#2563eb;
+                color:#ffffff;
+                padding:11px 18px;
+                border-radius:7px;
+                font-size:13px;
+                font-weight:600;
+                cursor:pointer;
+            "
+        >
+            + Add Question
+        </button>
+
+
+    </div>
+
+
+
+    <!-- ===================================================== -->
+    <!-- FILTER AREA -->
+    <!-- ===================================================== -->
+
+    <div style="
+        background:#ffffff;
+        border:1px solid #e5e7eb;
+        border-radius:12px;
+        padding:20px;
+        margin-bottom:20px;
+        box-shadow:0 3px 10px rgba(0,0,0,0.04);
+    ">
+
+
+        <div style="
+            display:grid;
+            grid-template-columns:2fr 1fr 1fr 1fr;
+            gap:12px;
+        ">
+
+
+            <!-- SEARCH -->
+
+            <div>
+
+                <label style="
+                    display:block;
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-bottom:6px;
+                ">
+                    Search Question
+                </label>
+
+
+                <input
+                    id="searchInput"
+                    type="text"
+                    placeholder="Search question..."
+                    onkeyup="filterQuestions()"
+                    style="
+                        width:100%;
+                        box-sizing:border-box;
+                        padding:10px 12px;
+                        border:1px solid #d1d5db;
+                        border-radius:7px;
+                        outline:none;
+                        font-size:13px;
+                    "
+                >
+
+            </div>
+
+
+
+            <!-- EXAM -->
+
+            <div>
+
+                <label style="
+                    display:block;
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-bottom:6px;
+                ">
+                    Exam
+                </label>
+
+
+                <select
+                    id="examFilter"
+                    onchange="filterQuestions()"
+                    style="
+                        width:100%;
+                        box-sizing:border-box;
+                        padding:10px;
+                        border:1px solid #d1d5db;
+                        border-radius:7px;
+                        background:#ffffff;
+                        font-size:13px;
+                    "
+                >
+
+                    <option value="">
+                        All Exams
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- DIFFICULTY -->
+
+            <div>
+
+                <label style="
+                    display:block;
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-bottom:6px;
+                ">
+                    Difficulty
+                </label>
+
+
+                <select
+                    id="difficultyFilter"
+                    onchange="filterQuestions()"
+                    style="
+                        width:100%;
+                        box-sizing:border-box;
+                        padding:10px;
+                        border:1px solid #d1d5db;
+                        border-radius:7px;
+                        background:#ffffff;
+                        font-size:13px;
+                    "
+                >
+
+                    <option value="">
+                        All Levels
+                    </option>
+
+                    <option value="Easy">
+                        Easy
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Hard">
+                        Hard
+                    </option>
+
+                </select>
+
+            </div>
+
+
+
+            <!-- TOPIC -->
+
+            <div>
+
+                <label style="
+                    display:block;
+                    font-size:12px;
+                    color:#6b7280;
+                    margin-bottom:6px;
+                ">
+                    Topic
+                </label>
+
+
+                <select
+                    id="topicFilter"
+                    onchange="filterQuestions()"
+                    style="
+                        width:100%;
+                        box-sizing:border-box;
+                        padding:10px;
+                        border:1px solid #d1d5db;
+                        border-radius:7px;
+                        background:#ffffff;
+                        font-size:13px;
+                    "
+                >
+
+                    <option value="">
+                        All Topics
+                    </option>
+
+                </select>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ===================================================== -->
+    <!-- QUESTION TABLE -->
+    <!-- ===================================================== -->
+
+    <div style="
+        background:#ffffff;
+        border:1px solid #e5e7eb;
+        border-radius:12px;
+        overflow:hidden;
+        box-shadow:0 3px 10px rgba(0,0,0,0.04);
+    ">
+
+
+        <!-- TABLE HEADER -->
+
+        <div style="
+            padding:20px 22px;
+            border-bottom:1px solid #e5e7eb;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        ">
+
+
+            <div>
+
+                <h2 style="
+                    margin:0 0 4px 0;
+                    font-size:18px;
+                    color:#111827;
+                ">
+                    Question Bank
+                </h2>
+
+
+                <p
+                    id="questionCount"
+                    style="
+                        margin:0;
+                        font-size:12px;
+                        color:#9ca3af;
+                    "
+                >
+                    Loading questions...
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- TABLE -->
+
+        <div style="overflow-x:auto;">
+
+            <table style="
+                width:100%;
+                border-collapse:collapse;
+                min-width:900px;
+            ">
+
+
+                <thead>
+
+                    <tr style="
+                        background:#f9fafb;
+                        text-align:left;
+                    ">
+
+
+                        <th style="
+                            padding:13px 15px;
+                            font-size:12px;
+                            color:#6b7280;
+                            font-weight:600;
+                        ">
+                            ID
+                        </th>
+
+
+                        <th style="
+                            padding:13px 15px;
+                            font-size:12px;
+                            color:#6b7280;
+                            font-weight:600;
+                        ">
+                            Question
+                        </th>
+
+
+                        <th style="
+                            padding:13px 15px;
+                            font-size:12px;
+                            color:#6b7280;
+                            font-weight:600;
+                        ">
+                            Exam
+                        </th>
+
+
+                        <th style="
+                            padding:13px 15px;
+                            font-size:12px;
+                            color:#6b7280;
+                            font-weight:600;
+                        ">
+                            Topic
+                        </th>
+
+
+                        <th style="
+                            padding:13px 15px;
+                            font-size:12px;
+                            color:#6b7280;
+                            font-weight:600;
+                        ">
+                            Difficulty
+                        </th>
+
+
+                        <th style="
+                            padding:13px 15px;
+                            font-size:12px;
+                            color:#6b7280;
+                            font-weight:600;
+                        ">
+                            Actions
+                        </th>
+
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="questionTable">
+
+                    <!-- JavaScript will insert questions here -->
+
+                </tbody>
+
+
+            </table>
+
+        </div>
+
+
+
+        <!-- PAGINATION / RESULT INFO -->
+
+        <div style="
+            padding:18px 22px;
+            border-top:1px solid #e5e7eb;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+        ">
+
+
+            <span
+                id="showingText"
+                style="
+                    font-size:12px;
+                    color:#6b7280;
+                "
+            >
+                Loading...
+            </span>
+
+
+        </div>
+
+
+    </div>
+
+
+</main>
+
+
+
+<!-- ========================================================= -->
+<!-- FOOTER -->
+<!-- ========================================================= -->
+
+<footer style="
+    text-align:center;
+    padding:25px;
+    color:#9ca3af;
+    font-size:13px;
+">
+
+    © 2026 Adaptive Online Exam System
+
+</footer>
+
+
+
+<!-- ========================================================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================================================= -->
+
+<script>
+
+
+// ============================================================
+// GLOBAL QUESTIONS ARRAY
+// ============================================================
+
+let allQuestions = [];
+
+
+
+// ============================================================
+// LOAD QUESTIONS FROM BACKEND
+// ============================================================
+
+async function loadQuestions() {
+
+    try {
+
+        const response = await fetch(
+            "../backend/admin/get-questions.php",
+            {
+                method: "GET",
+                credentials: "include"
+            }
+        );
+
+
+        if (!response.ok) {
+
+            if (response.status === 401) {
+
+                alert(
+                    "Your admin session has expired. Please login again."
+                );
+
+                window.location.href = "login.html";
+
+                return;
+            }
+
+            throw new Error(
+                "HTTP error: " + response.status
+            );
+        }
+
+
+        const data = await response.json();
+
+
+        if (!data.success) {
+
+            throw new Error(
+                data.message || "Failed to load questions"
+            );
+        }
+
+
+        allQuestions = data.questions || [];
+
+
+        populateFilters();
+
+
+        displayQuestions(allQuestions);
+
+
+    } catch (error) {
+
+        console.error(error);
+
+
+        document.getElementById(
+            "questionTable"
+        ).innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    style="
+                        padding:30px;
+                        text-align:center;
+                        color:#dc2626;
+                        font-size:14px;
+                    "
+                >
+
+                    Failed to load questions.
+
+                    <br><br>
+
+                    Please check your backend.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        document.getElementById(
+            "questionCount"
+        ).innerText = "Unable to load questions";
+
+
+        document.getElementById(
+            "showingText"
+        ).innerText = "";
+
+    }
+
+}
+
+
+
+// ============================================================
+// POPULATE EXAM AND TOPIC FILTERS
+// ============================================================
+
+function populateFilters() {
+
+
+    const examFilter =
+        document.getElementById("examFilter");
+
+
+    const topicFilter =
+        document.getElementById("topicFilter");
+
+
+    const exams = new Set();
+
+    const topics = new Set();
+
+
+    allQuestions.forEach(function(question) {
+
+        if (question.exam_name) {
+
+            exams.add(
+                question.exam_name
+            );
+
+        }
+
+
+        if (question.topic) {
+
+            topics.add(
+                question.topic
+            );
+
+        }
+
+    });
+
+
+    examFilter.innerHTML = `
+        <option value="">
+            All Exams
+        </option>
+    `;
+
+
+    topicFilter.innerHTML = `
+        <option value="">
+            All Topics
+        </option>
+    `;
+
+
+
+    Array.from(exams)
+        .sort()
+        .forEach(function(exam) {
+
+            const option =
+                document.createElement("option");
+
+
+            option.value = exam;
+
+            option.textContent = exam;
+
+
+            examFilter.appendChild(option);
+
+        });
+
+
+
+    Array.from(topics)
+        .sort()
+        .forEach(function(topic) {
+
+            const option =
+                document.createElement("option");
+
+
+            option.value = topic;
+
+            option.textContent = topic;
+
+
+            topicFilter.appendChild(option);
+
+        });
+
+}
+
+
+
+// ============================================================
+// DISPLAY QUESTIONS
+// ============================================================
+
+function displayQuestions(questions) {
+
+
+    const table =
+        document.getElementById(
+            "questionTable"
+        );
+
+
+    table.innerHTML = "";
+
+
+    if (questions.length === 0) {
+
+        table.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="6"
+                    style="
+                        padding:40px;
+                        text-align:center;
+                        color:#9ca3af;
+                        font-size:14px;
+                    "
+                >
+
+                    No questions found.
+
+                </td>
+
+            </tr>
+
+        `;
+
+
+        updateCount(0);
+
+        return;
+    }
+
+
+
+    questions.forEach(function(question) {
+
+
+        const row =
+            document.createElement("tr");
+
+
+        row.style.borderTop =
+            "1px solid #f0f0f0";
+
+
+
+        // ID
+
+        const idCell =
+            document.createElement("td");
+
+
+        idCell.style.cssText = `
+            padding:15px;
+            font-size:13px;
+            color:#6b7280;
+        `;
+
+
+        idCell.innerText =
+            question.id;
+
+
+        row.appendChild(idCell);
+
+
+
+        // QUESTION
+
+        const questionCell =
+            document.createElement("td");
+
+
+        questionCell.style.cssText = `
+            padding:15px;
+            font-size:13px;
+            color:#111827;
+            font-weight:500;
+            max-width:350px;
+        `;
+
+
+        questionCell.innerText =
+            question.question;
+
+
+        row.appendChild(questionCell);
+
+
+
+        // EXAM
+
+        const examCell =
+            document.createElement("td");
+
+
+        examCell.style.cssText = `
+            padding:15px;
+            font-size:12px;
+            color:#6b7280;
+        `;
+
+
+        examCell.innerText =
+            question.exam_name || "N/A";
+
+
+        row.appendChild(examCell);
+
+
+
+        // TOPIC
+
+        const topicCell =
+            document.createElement("td");
+
+
+        topicCell.style.cssText = `
+            padding:15px;
+            font-size:12px;
+            color:#6b7280;
+        `;
+
+
+        topicCell.innerText =
+            question.topic || "N/A";
+
+
+        row.appendChild(topicCell);
+
+
+
+        // DIFFICULTY
+
+        const difficultyCell =
+            document.createElement("td");
+
+
+        difficultyCell.style.padding =
+            "15px";
+
+
+        const difficulty =
+            document.createElement("span");
+
+
+        difficulty.innerText =
+            question.difficulty;
+
+
+        difficulty.style.cssText = `
+            padding:5px 9px;
+            border-radius:15px;
+            font-size:11px;
+            font-weight:600;
+        `;
+
+
+
+        if (
+            question.difficulty === "Easy"
+        ) {
+
+            difficulty.style.background =
+                "#dcfce7";
+
+            difficulty.style.color =
+                "#16a34a";
+
+        }
+
+
+        else if (
+            question.difficulty === "Medium"
+        ) {
+
+            difficulty.style.background =
+                "#fef3c7";
+
+            difficulty.style.color =
+                "#d97706";
+
+        }
+
+
+        else if (
+            question.difficulty === "Hard"
+        ) {
+
+            difficulty.style.background =
+                "#fee2e2";
+
+            difficulty.style.color =
+                "#dc2626";
+
+        }
+
+
+        difficultyCell.appendChild(
+            difficulty
+        );
+
+
+        row.appendChild(
+            difficultyCell
+        );
+
+
+
+        // ACTIONS
+
+        const actionCell =
+            document.createElement("td");
+
+
+        actionCell.style.padding =
+            "15px";
+
+
+
+        // EDIT
+
+        const editButton =
+            document.createElement("button");
+
+
+        editButton.innerText =
+            "Edit";
+
+
+        editButton.style.cssText = `
+            border:none;
+            background:#eff6ff;
+            color:#2563eb;
+            padding:7px 10px;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:11px;
+            font-weight:600;
+            margin-right:5px;
+        `;
+
+
+        editButton.onclick =
+            function() {
+
+                editQuestion(
+                    question.id
+                );
+
+            };
+
+
+        actionCell.appendChild(
+            editButton
+        );
+
+
+
+        // DELETE
+
+        const deleteButton =
+            document.createElement("button");
+
+
+        deleteButton.innerText =
+            "Delete";
+
+
+        deleteButton.style.cssText = `
+            border:none;
+            background:#fee2e2;
+            color:#dc2626;
+            padding:7px 10px;
+            border-radius:5px;
+            cursor:pointer;
+            font-size:11px;
+            font-weight:600;
+        `;
+
+
+        deleteButton.onclick =
+            function() {
+
+                deleteQuestion(
+                    question.id
+                );
+
+            };
+
+
+        actionCell.appendChild(
+            deleteButton
+        );
+
+
+        row.appendChild(
+            actionCell
+        );
+
+
+        table.appendChild(row);
+
+    });
+
+
+
+    updateCount(
+        questions.length
+    );
+
+}
+
+
+
+// ============================================================
+// UPDATE COUNT
+// ============================================================
+
+function updateCount(count) {
+
+
+    document.getElementById(
+        "questionCount"
+    ).innerText =
+
+        count +
+        (
+            count === 1
+                ? " question available"
+                : " questions available"
+        );
+
+
+
+    document.getElementById(
+        "showingText"
+    ).innerText =
+
+        "Showing " +
+        count +
+        " of " +
+        allQuestions.length +
+        " questions";
+
+}
+
+
+
+// ============================================================
+// FILTER QUESTIONS
+// ============================================================
+
+function filterQuestions() {
+
+
+    const search =
+        document.getElementById(
+            "searchInput"
+        ).value
+        .toLowerCase()
+        .trim();
+
+
+    const selectedExam =
+        document.getElementById(
+            "examFilter"
+        ).value;
+
+
+    const selectedDifficulty =
+        document.getElementById(
+            "difficultyFilter"
+        ).value;
+
+
+    const selectedTopic =
+        document.getElementById(
+            "topicFilter"
+        ).value;
+
+
+
+    const filtered =
+        allQuestions.filter(
+            function(question) {
+
+
+                const questionText =
+                    (
+                        question.question || ""
+                    ).toLowerCase();
+
+
+                const topic =
+                    question.topic || "";
+
+
+                const exam =
+                    question.exam_name || "";
+
+
+                const difficulty =
+                    question.difficulty || "";
+
+
+
+                const matchesSearch =
+                    search === "" ||
+                    questionText.includes(
+                        search
+                    );
+
+
+                const matchesExam =
+                    selectedExam === "" ||
+                    exam === selectedExam;
+
+
+                const matchesDifficulty =
+                    selectedDifficulty === "" ||
+                    difficulty ===
+                    selectedDifficulty;
+
+
+                const matchesTopic =
+                    selectedTopic === "" ||
+                    topic === selectedTopic;
+
+
+                return (
+                    matchesSearch &&
+                    matchesExam &&
+                    matchesDifficulty &&
+                    matchesTopic
+                );
+
+            }
+        );
+
+
+
+    displayQuestions(
+        filtered
+    );
+
+}
+
+
+
+// ============================================================
+// EDIT QUESTION
+// ============================================================
+
+function editQuestion(id) {
+
+
+    window.location.href =
+        "add_question.html?id=" +
+        encodeURIComponent(id);
+
+}
+
+
+
+// ============================================================
+// DELETE QUESTION
+// ============================================================
+
+async function deleteQuestion(id) {
+
+
+    const confirmDelete =
+        confirm(
+            "Are you sure you want to delete Question " +
+            id +
+            "?"
+        );
+
+
+    if (!confirmDelete) {
+
+        return;
+
+    }
+
+
+
+    try {
+
+
+        const response =
+            await fetch(
+                "../backend/admin/delete-question.php",
+                {
+                    method:"POST",
+
+                    headers:{
+                        "Content-Type":
+                            "application/x-www-form-urlencoded"
+                    },
+
+                    credentials:"include",
+
+                    body:
+                        "id=" +
+                        encodeURIComponent(id)
+                }
+            );
+
+
+
+        const data =
+            await response.json();
+
+
+
+        if (!response.ok || !data.success) {
+
+            throw new Error(
+                data.message ||
+                "Failed to delete question"
+            );
+
+        }
+
+
+
+        alert(
+            "Question deleted successfully."
+        );
+
+
+
+        await loadQuestions();
+
+
+    }
+
+    catch(error) {
+
+
+        console.error(error);
+
+
+        alert(
+            "Delete failed: " +
+            error.message
+        );
+
+    }
+
+}
+
+
+
+// ============================================================
+// LOGOUT
+// ============================================================
+
+function logout() {
+
+
+    const confirmLogout =
+        confirm(
+            "Are you sure you want to logout?"
+        );
+
+
+    if (confirmLogout) {
+
+        window.location.href =
+            "login.html";
+
+    }
+
+}
+
+
+
+// ============================================================
+// LOAD QUESTIONS WHEN PAGE OPENS
+// ============================================================
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadQuestions();
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

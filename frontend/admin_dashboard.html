@@ -1,0 +1,1077 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Admin Dashboard - Adaptive Online Exam
+    </title>
+
+</head>
+
+
+<body style="
+    margin:0;
+    font-family:Arial, Helvetica, sans-serif;
+    background:#f5f7fb;
+    color:#1f2937;
+">
+
+
+    <!-- =========================================================
+         HEADER
+    ========================================================== -->
+
+    <header style="
+        min-height:70px;
+        background:#ffffff;
+        border-bottom:1px solid #e5e7eb;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding:10px 35px;
+        box-sizing:border-box;
+        gap:20px;
+        flex-wrap:wrap;
+    ">
+
+
+        <!-- =====================================================
+             LOGO
+        ====================================================== -->
+
+        <a
+            href="admin_dashboard.html"
+            style="
+                text-decoration:none;
+                font-size:22px;
+                font-weight:700;
+                color:#2563eb;
+                white-space:nowrap;
+            "
+        >
+
+            Adaptive<span style="color:#111827;">Exam</span>
+
+        </a>
+
+
+
+        <!-- =====================================================
+             ADMIN NAVIGATION
+        ====================================================== -->
+
+        <nav style="
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            gap:5px;
+            flex-wrap:wrap;
+            flex:1;
+        ">
+
+
+            <!-- DASHBOARD -->
+
+            <a
+                href="admin_dashboard.html"
+                style="
+                    text-decoration:none;
+                    color:#2563eb;
+                    background:#eff6ff;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+            >
+
+                Dashboard
+
+            </a>
+
+
+
+            <!-- ADD EXAM -->
+
+            <a
+                href="add-exam.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Add Exam
+
+            </a>
+
+
+
+            <!-- ADD QUESTION -->
+
+            <a
+                href="add_question.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Add Question
+
+            </a>
+
+
+
+            <!-- MANAGE QUESTIONS -->
+
+            <a
+                href="manage_questions.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Manage Questions
+
+            </a>
+
+
+
+            <!-- STUDENTS -->
+
+            <a
+                href="student_details.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Students
+
+            </a>
+
+
+
+            <!-- RESULTS -->
+
+            <a
+                href="results.html"
+                style="
+                    text-decoration:none;
+                    color:#374151;
+                    padding:9px 13px;
+                    border-radius:7px;
+                    font-size:13px;
+                    font-weight:600;
+                    white-space:nowrap;
+                "
+                onmouseover="this.style.background='#f3f4f6'"
+                onmouseout="this.style.background='transparent'"
+            >
+
+                Results
+
+            </a>
+
+
+        </nav>
+
+
+
+        <!-- =====================================================
+             ADMIN INFORMATION
+        ====================================================== -->
+
+        <div style="
+            display:flex;
+            align-items:center;
+            gap:15px;
+            white-space:nowrap;
+        ">
+
+
+            <span style="
+                font-size:14px;
+                color:#6b7280;
+            ">
+
+                Welcome, Admin
+
+            </span>
+
+
+
+            <!-- ADMIN AVATAR -->
+
+            <div style="
+                width:40px;
+                height:40px;
+                border-radius:50%;
+                background:#111827;
+                color:#ffffff;
+                display:flex;
+                align-items:center;
+                justify-content:center;
+                font-weight:bold;
+            ">
+
+                A
+
+            </div>
+
+
+
+            <!-- LOGOUT -->
+
+            <button
+                onclick="logout()"
+                style="
+                    border:none;
+                    background:#fee2e2;
+                    color:#dc2626;
+                    padding:9px 16px;
+                    border-radius:7px;
+                    cursor:pointer;
+                    font-weight:600;
+                "
+            >
+
+                Logout
+
+            </button>
+
+
+        </div>
+
+
+    </header>
+
+
+
+
+    <!-- =========================================================
+         MAIN
+    ========================================================== -->
+
+    <main style="
+        max-width:1200px;
+        margin:0 auto;
+        padding:35px 25px;
+    ">
+
+
+        <!-- =====================================================
+             PAGE HEADING
+        ====================================================== -->
+
+        <div style="
+            margin-bottom:30px;
+        ">
+
+
+            <h1 style="
+                margin:0 0 8px 0;
+                font-size:28px;
+                color:#111827;
+            ">
+
+                Admin Dashboard
+
+            </h1>
+
+
+
+            <p style="
+                margin:0;
+                color:#6b7280;
+                font-size:14px;
+            ">
+
+                Manage exams, questions and student results.
+
+            </p>
+
+
+        </div>
+
+
+
+
+        <!-- =====================================================
+             STATISTICS
+        ====================================================== -->
+
+        <section style="
+            display:grid;
+            grid-template-columns:repeat(4, 1fr);
+            gap:18px;
+            margin-bottom:30px;
+        ">
+
+
+            <!-- TOTAL STUDENTS -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:12px;
+                padding:22px;
+                box-shadow:0 3px 10px rgba(0,0,0,0.04);
+            ">
+
+
+                <div style="
+                    font-size:13px;
+                    color:#6b7280;
+                    margin-bottom:8px;
+                ">
+
+                    Total Students
+
+                </div>
+
+
+
+                <div
+                    id="totalStudents"
+                    style="
+                        font-size:28px;
+                        font-weight:700;
+                        color:#2563eb;
+                    "
+                >
+
+                    —
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TOTAL EXAMS -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:12px;
+                padding:22px;
+                box-shadow:0 3px 10px rgba(0,0,0,0.04);
+            ">
+
+
+                <div style="
+                    font-size:13px;
+                    color:#6b7280;
+                    margin-bottom:8px;
+                ">
+
+                    Total Exams
+
+                </div>
+
+
+
+                <div
+                    id="totalExams"
+                    style="
+                        font-size:28px;
+                        font-weight:700;
+                        color:#16a34a;
+                    "
+                >
+
+                    —
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- TOTAL QUESTIONS -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:12px;
+                padding:22px;
+                box-shadow:0 3px 10px rgba(0,0,0,0.04);
+            ">
+
+
+                <div style="
+                    font-size:13px;
+                    color:#6b7280;
+                    margin-bottom:8px;
+                ">
+
+                    Total Questions
+
+                </div>
+
+
+
+                <div
+                    id="totalQuestions"
+                    style="
+                        font-size:28px;
+                        font-weight:700;
+                        color:#f59e0b;
+                    "
+                >
+
+                    —
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- AVERAGE SCORE -->
+
+            <div style="
+                background:#ffffff;
+                border:1px solid #e5e7eb;
+                border-radius:12px;
+                padding:22px;
+                box-shadow:0 3px 10px rgba(0,0,0,0.04);
+            ">
+
+
+                <div style="
+                    font-size:13px;
+                    color:#6b7280;
+                    margin-bottom:8px;
+                ">
+
+                    Average Score
+
+                </div>
+
+
+
+                <div
+                    id="averageScore"
+                    style="
+                        font-size:28px;
+                        font-weight:700;
+                        color:#8b5cf6;
+                    "
+                >
+
+                    —
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+
+
+        <!-- =====================================================
+             RECENT EXAMS
+        ====================================================== -->
+
+        <section style="
+            background:#ffffff;
+            border:1px solid #e5e7eb;
+            border-radius:12px;
+            padding:25px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.04);
+        ">
+
+
+            <!-- SECTION HEADER -->
+
+            <div style="
+                display:flex;
+                justify-content:space-between;
+                align-items:center;
+                margin-bottom:15px;
+            ">
+
+
+                <div>
+
+
+                    <h2 style="
+                        margin:0 0 5px 0;
+                        font-size:20px;
+                        color:#111827;
+                    ">
+
+                        Recent Exams
+
+                    </h2>
+
+
+
+                    <p style="
+                        margin:0;
+                        color:#9ca3af;
+                        font-size:13px;
+                    ">
+
+                        Recently created examinations
+
+                    </p>
+
+
+                </div>
+
+
+
+                <!-- ADD EXAM BUTTON -->
+
+                <button
+                    onclick="addExam()"
+                    style="
+                        border:none;
+                        background:#2563eb;
+                        color:#ffffff;
+                        padding:10px 16px;
+                        border-radius:7px;
+                        cursor:pointer;
+                        font-weight:600;
+                    "
+                >
+
+                    + Add Exam
+
+                </button>
+
+
+            </div>
+
+
+
+
+            <!-- =================================================
+                 DYNAMIC EXAMS
+            ================================================== -->
+
+            <div id="recentExams">
+
+
+                <div style="
+                    text-align:center;
+                    padding:30px;
+                    color:#9ca3af;
+                ">
+
+                    Loading exams...
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </main>
+
+
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer style="
+        text-align:center;
+        padding:25px;
+        margin-top:10px;
+        color:#9ca3af;
+        font-size:13px;
+    ">
+
+        © 2026 Adaptive Online Exam System
+
+    </footer>
+
+
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+
+        // ========================================================
+        // LOGOUT
+        // ========================================================
+
+        function logout() {
+
+            const confirmLogout =
+                confirm(
+                    "Are you sure you want to logout?"
+                );
+
+
+            if (confirmLogout) {
+
+                window.location.href =
+                    "login.html";
+
+            }
+
+        }
+
+
+
+
+        // ========================================================
+        // ADD EXAM
+        // ========================================================
+
+        function addExam() {
+
+            window.location.href =
+                "add-exam.html";
+
+        }
+
+
+
+
+        // ========================================================
+        // LOAD DASHBOARD
+        // ========================================================
+
+        async function loadDashboard() {
+
+
+            try {
+
+
+                const response =
+                    await fetch(
+                        "../backend/admin/dashboard-stats.php"
+                    );
+
+
+
+                const data =
+                    await response.json();
+
+
+
+                // =================================================
+                // CHECK RESPONSE
+                // =================================================
+
+                if (!data.success) {
+
+
+                    console.error(
+                        "Dashboard error:",
+                        data.message
+                    );
+
+
+                    document.getElementById(
+                        "recentExams"
+                    ).innerHTML = `
+
+                        <div style="
+                            text-align:center;
+                            padding:30px;
+                            color:#dc2626;
+                        ">
+
+                            ${data.message || "Unable to load dashboard data."}
+
+                        </div>
+
+                    `;
+
+
+                    return;
+
+                }
+
+
+
+
+                // =================================================
+                // STATISTICS
+                // =================================================
+
+                document.getElementById(
+                    "totalStudents"
+                ).textContent =
+                    data.statistics.students;
+
+
+
+                document.getElementById(
+                    "totalExams"
+                ).textContent =
+                    data.statistics.exams;
+
+
+
+                document.getElementById(
+                    "totalQuestions"
+                ).textContent =
+                    data.statistics.questions;
+
+
+
+                document.getElementById(
+                    "averageScore"
+                ).textContent =
+                    "—";
+
+
+
+
+                // =================================================
+                // RECENT EXAMS
+                // =================================================
+
+                const recentExams =
+                    document.getElementById(
+                        "recentExams"
+                    );
+
+
+
+                recentExams.innerHTML =
+                    "";
+
+
+
+
+                // =================================================
+                // NO EXAMS
+                // =================================================
+
+                if (
+                    !data.recent_exams ||
+                    data.recent_exams.length === 0
+                ) {
+
+
+                    recentExams.innerHTML = `
+
+                        <div style="
+                            text-align:center;
+                            padding:30px;
+                            color:#9ca3af;
+                        ">
+
+                            No exams created yet.
+
+                        </div>
+
+                    `;
+
+
+                    return;
+
+                }
+
+
+
+
+                // =================================================
+                // DISPLAY EXAMS
+                // =================================================
+
+                data.recent_exams.forEach(
+                    function(exam) {
+
+
+                        const examRow =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        examRow.style.display =
+                            "flex";
+
+
+                        examRow.style.justifyContent =
+                            "space-between";
+
+
+                        examRow.style.alignItems =
+                            "center";
+
+
+                        examRow.style.padding =
+                            "16px 0";
+
+
+                        examRow.style.borderTop =
+                            "1px solid #f0f0f0";
+
+
+
+                        // EXAM INFORMATION
+
+                        const examInfo =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        const examName =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        examName.style.fontSize =
+                            "15px";
+
+
+                        examName.style.fontWeight =
+                            "600";
+
+
+                        examName.style.color =
+                            "#111827";
+
+
+                        examName.textContent =
+                            exam.exam_name;
+
+
+
+                        const examDetails =
+                            document.createElement(
+                                "div"
+                            );
+
+
+                        examDetails.style.fontSize =
+                            "12px";
+
+
+                        examDetails.style.color =
+                            "#9ca3af";
+
+
+                        examDetails.style.marginTop =
+                            "5px";
+
+
+                        examDetails.textContent =
+                            exam.total_questions +
+                            " Questions · " +
+                            exam.duration +
+                            " Minutes";
+
+
+
+                        examInfo.appendChild(
+                            examName
+                        );
+
+
+                        examInfo.appendChild(
+                            examDetails
+                        );
+
+
+
+                        // STATUS
+
+                        const status =
+                            document.createElement(
+                                "span"
+                            );
+
+
+                        status.style.padding =
+                            "6px 10px";
+
+
+                        status.style.borderRadius =
+                            "20px";
+
+
+                        status.style.fontSize =
+                            "11px";
+
+
+                        status.style.fontWeight =
+                            "600";
+
+
+                        const statusText =
+                            String(
+                                exam.status
+                            );
+
+
+
+                        if (
+                            statusText.toLowerCase() ===
+                            "active"
+                        ) {
+
+
+                            status.style.background =
+                                "#dcfce7";
+
+
+                            status.style.color =
+                                "#16a34a";
+
+                        } else {
+
+
+                            status.style.background =
+                                "#fee2e2";
+
+
+                            status.style.color =
+                                "#dc2626";
+
+                        }
+
+
+
+                        status.textContent =
+                            statusText;
+
+
+
+                        // BUILD ROW
+
+                        examRow.appendChild(
+                            examInfo
+                        );
+
+
+                        examRow.appendChild(
+                            status
+                        );
+
+
+                        recentExams.appendChild(
+                            examRow
+                        );
+
+
+                    }
+                );
+
+
+            }
+
+
+            catch (error) {
+
+
+                console.error(
+                    "Dashboard loading failed:",
+                    error
+                );
+
+
+                document.getElementById(
+                    "recentExams"
+                ).innerHTML = `
+
+                    <div style="
+                        text-align:center;
+                        padding:30px;
+                        color:#dc2626;
+                    ">
+
+                        Failed to load dashboard data.
+
+                        <br><br>
+
+                        Please check whether the
+                        admin login session is active.
+
+                    </div>
+
+                `;
+
+
+            }
+
+
+        }
+
+
+
+
+        // ========================================================
+        // START DASHBOARD
+        // ========================================================
+
+        document.addEventListener(
+            "DOMContentLoaded",
+            loadDashboard
+        );
+
+
+    </script>
+
+
+</body>
+
+</html>

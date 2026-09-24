@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Examination Results - Adaptive Exam
+    </title>
+
+    <style>
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #1f2937;
+        }
+
+        /* ================= HEADER ================= */
+
+        header {
+            min-height: 70px;
+            background: #ffffff;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            padding: 10px 35px;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .logo {
+            text-decoration: none;
+            font-size: 22px;
+            font-weight: 700;
+            color: #2563eb;
+            white-space: nowrap;
+        }
+
+        .logo span {
+            color: #111827;
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            gap: 5px;
+            flex-wrap: wrap;
+            flex: 1;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #374151;
+
+            padding: 9px 13px;
+            border-radius: 7px;
+
+            font-size: 13px;
+            font-weight: 600;
+
+            white-space: nowrap;
+        }
+
+        nav a:hover {
+            background: #f3f4f6;
+        }
+
+        nav a.active {
+            color: #2563eb;
+            background: #eff6ff;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            white-space: nowrap;
+        }
+
+        .welcome {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+
+            background: #111827;
+            color: white;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-weight: bold;
+        }
+
+        .logout-btn {
+            border: none;
+            background: #fee2e2;
+            color: #dc2626;
+
+            padding: 9px 16px;
+            border-radius: 7px;
+
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .logout-btn:hover {
+            background: #fecaca;
+        }
+
+
+        /* ================= MAIN ================= */
+
+        main {
+            max-width: 1500px;
+            margin: 0 auto;
+            padding: 35px 25px;
+        }
+
+        .page-header {
+            margin-bottom: 25px;
+        }
+
+        .page-header h1 {
+            margin: 0 0 7px 0;
+            font-size: 28px;
+            color: #111827;
+        }
+
+        .page-header p {
+            margin: 0;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+
+        /* ================= SUMMARY ================= */
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 25px;
+        }
+
+        .summary-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            padding: 20px;
+
+            box-shadow:
+                0 3px 10px
+                rgba(0,0,0,0.04);
+        }
+
+        .summary-title {
+            color: #6b7280;
+            font-size: 13px;
+            margin-bottom: 8px;
+        }
+
+        .summary-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: #2563eb;
+        }
+
+
+        /* ================= RESULTS CARD ================= */
+
+        .results-card {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+
+            box-shadow:
+                0 3px 10px
+                rgba(0,0,0,0.04);
+
+            overflow: hidden;
+        }
+
+        .results-header {
+            padding: 25px;
+            border-bottom: 1px solid #e5e7eb;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .results-header h2 {
+            margin: 0 0 5px 0;
+            font-size: 20px;
+            color: #111827;
+        }
+
+        .results-header p {
+            margin: 0;
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+
+        /* ================= LIVE ================= */
+
+        .live-status {
+            display: flex;
+            align-items: center;
+            gap: 7px;
+
+            font-size: 13px;
+            color: #16a34a;
+            font-weight: 600;
+        }
+
+        .live-dot {
+            width: 9px;
+            height: 9px;
+
+            border-radius: 50%;
+
+            background: #22c55e;
+
+            animation:
+                pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+
+            0% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .35;
+            }
+
+            100% {
+                opacity: 1;
+            }
+
+        }
+
+
+        /* ================= TABLE ================= */
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 1100px;
+        }
+
+        thead {
+            background: #f9fafb;
+        }
+
+        th {
+            text-align: left;
+
+            padding: 16px 20px;
+
+            font-size: 13px;
+            color: #64748b;
+            font-weight: 700;
+
+            border-bottom:
+                1px solid #e5e7eb;
+
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 17px 20px;
+
+            font-size: 14px;
+
+            border-bottom:
+                1px solid #f0f0f0;
+
+            white-space: nowrap;
+        }
+
+        tbody tr:hover {
+            background: #fafafa;
+        }
+
+
+        /* ================= STUDENT ================= */
+
+        .student-name {
+            font-weight: 700;
+            color: #111827;
+        }
+
+        .student-id {
+            margin-top: 4px;
+
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .student-email {
+            margin-top: 3px;
+
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+
+        /* ================= EXAM ================= */
+
+        .exam-name {
+            color: #475569;
+            font-weight: 600;
+        }
+
+
+        /* ================= COLORS ================= */
+
+        .correct {
+            color: #16a34a;
+            font-weight: 700;
+        }
+
+        .wrong {
+            color: #dc2626;
+            font-weight: 700;
+        }
+
+        .score {
+            color: #2563eb;
+            font-weight: 700;
+        }
+
+
+        /* ================= ABILITY ================= */
+
+        .ability-badge {
+            display: inline-block;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: #ede9fe;
+            color: #7c3aed;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+
+        /* ================= COMPLETED ================= */
+
+        .completed-badge {
+            display: inline-block;
+
+            padding: 6px 11px;
+
+            border-radius: 20px;
+
+            background: #dcfce7;
+            color: #16a34a;
+
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .completed-time {
+            margin-top: 5px;
+
+            font-size: 11px;
+            color: #9ca3af;
+        }
+
+
+        /* ================= STATES ================= */
+
+        .empty {
+            text-align: center;
+            padding: 50px 20px;
+            color: #9ca3af;
+        }
+
+        .error {
+            text-align: center;
+            padding: 50px 20px;
+            color: #dc2626;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 50px 20px;
+            color: #9ca3af;
+        }
+
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 25px;
+
+            color: #9ca3af;
+            font-size: 13px;
+        }
+
+
+        /* ================= MOBILE ================= */
+
+        @media (max-width: 900px) {
+
+            header {
+                justify-content: center;
+            }
+
+            nav {
+                order: 3;
+                flex-basis: 100%;
+            }
+
+            .admin-info {
+                margin-left: auto;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .results-header {
+                align-items: flex-start;
+                gap: 15px;
+                flex-direction: column;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     HEADER
+========================================================= -->
+
+<header>
+
+
+    <a
+        href="admin_dashboard.html"
+        class="logo"
+    >
+
+        Adaptive<span>Exam</span>
+
+    </a>
+
+
+    <nav>
+
+        <a href="admin_dashboard.html">
+            Dashboard
+        </a>
+
+        <a href="add-exam.html">
+            Add Exam
+        </a>
+
+        <a href="add_question.html">
+            Add Question
+        </a>
+
+        <a href="manage_questions.html">
+            Manage Questions
+        </a>
+
+        <a href="student_details.html">
+            Students
+        </a>
+
+        <a
+            href="results.html"
+            class="active"
+        >
+            Results
+        </a>
+
+    </nav>
+
+
+    <div class="admin-info">
+
+        <span class="welcome">
+            Welcome, Admin
+        </span>
+
+        <div class="avatar">
+            A
+        </div>
+
+        <button
+            class="logout-btn"
+            onclick="logout()"
+        >
+            Logout
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================================
+     MAIN
+========================================================= -->
+
+<main>
+
+
+    <div class="page-header">
+
+        <h1>
+            Examination Results
+        </h1>
+
+        <p>
+            Live results of students who completed examinations.
+        </p>
+
+    </div>
+
+
+
+    <!-- =====================================================
+         SUMMARY
+    ====================================================== -->
+
+    <section class="summary-grid">
+
+
+        <div class="summary-card">
+
+            <div class="summary-title">
+                Completed Exams
+            </div>
+
+            <div
+                class="summary-value"
+                id="totalResults"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-title">
+                Total Correct Answers
+            </div>
+
+            <div
+                class="summary-value"
+                id="totalCorrect"
+            >
+                —
+            </div>
+
+        </div>
+
+
+        <div class="summary-card">
+
+            <div class="summary-title">
+                Average Score
+            </div>
+
+            <div
+                class="summary-value"
+                id="averageScore"
+            >
+                —
+            </div>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         RESULTS
+    ====================================================== -->
+
+    <section class="results-card">
+
+
+        <div class="results-header">
+
+            <div>
+
+                <h2>
+                    Completed Examinations
+                </h2>
+
+                <p>
+                    Results automatically refresh every 5 seconds.
+                </p>
+
+            </div>
+
+
+            <div class="live-status">
+
+                <span class="live-dot"></span>
+
+                LIVE
+
+            </div>
+
+        </div>
+
+
+
+        <div class="table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+
+                        <th>
+                            Student
+                        </th>
+
+                        <th>
+                            Exam
+                        </th>
+
+                        <th>
+                            Questions
+                        </th>
+
+                        <th>
+                            Correct
+                        </th>
+
+                        <th>
+                            Wrong
+                        </th>
+
+                        <th>
+                            Score
+                        </th>
+
+                        <th>
+                            Ability Level
+                        </th>
+
+                        <th>
+                            Completed
+                        </th>
+
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="resultsBody">
+
+                    <tr>
+
+                        <td
+                            colspan="8"
+                            class="loading"
+                        >
+
+                            Loading results...
+
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </section>
+
+</main>
+
+
+
+<footer>
+
+    © 2026 Adaptive Online Exam System
+
+</footer>
+
+
+
+<script>
+
+/* =========================================================
+   LOGOUT
+========================================================= */
+
+function logout() {
+
+    if (
+        confirm(
+            "Are you sure you want to logout?"
+        )
+    ) {
+
+        window.location.href =
+            "login.html";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   ESCAPE HTML
+========================================================= */
+
+function escapeHtml(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+
+        return "";
+
+    }
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+
+/* =========================================================
+   FORMAT DATE
+========================================================= */
+
+function formatDate(value) {
+
+    if (!value) {
+
+        return "—";
+
+    }
+
+    /*
+     * MySQL datetime:
+     * 2026-08-26 13:46:53
+     *
+     * Convert to:
+     * 2026-08-26T13:46:53
+     */
+
+    const date =
+        new Date(
+            String(value)
+                .replace(" ", "T")
+        );
+
+
+    if (
+        isNaN(
+            date.getTime()
+        )
+    ) {
+
+        return escapeHtml(value);
+
+    }
+
+
+    return date.toLocaleString(
+        "en-IN",
+        {
+            day: "2-digit",
+            month: "short",
+            year: "numeric",
+            hour: "2-digit",
+            minute: "2-digit"
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   LOAD RESULTS
+========================================================= */
+
+async function loadResults() {
+
+    const resultsBody =
+        document.getElementById(
+            "resultsBody"
+        );
+
+
+    try {
+
+        /*
+         * IMPORTANT
+         *
+         * This file is:
+         *
+         * frontend/results.html
+         *
+         * Backend API is:
+         *
+         * backend/admin/live-results.php
+         *
+         * Therefore:
+         *
+         * ../backend/admin/live-results.php
+         */
+
+        const apiUrl =
+            "../backend/admin/live-results.php";
+
+
+        console.log(
+            "Loading results from:",
+            apiUrl
+        );
+
+
+        /*
+         * Add timestamp to prevent
+         * browser/server caching.
+         */
+
+        const requestUrl =
+            apiUrl +
+            "?_=" +
+            Date.now();
+
+
+        const response =
+            await fetch(
+                requestUrl,
+                {
+                    method: "GET",
+                    cache: "no-store",
+                    headers: {
+                        "Accept":
+                            "application/json",
+                        "Cache-Control":
+                            "no-cache"
+                    }
+                }
+            );
+
+
+        console.log(
+            "HTTP status:",
+            response.status
+        );
+
+
+        /*
+         * HTTP ERROR
+         */
+
+        if (!response.ok) {
+
+            throw new Error(
+                "HTTP " +
+                response.status +
+                " - " +
+                response.statusText
+            );
+
+        }
+
+
+        /*
+         * Read server response as text first.
+         *
+         * This helps detect PHP errors,
+         * HTML error pages, warnings, etc.
+         */
+
+        const text =
+            await response.text();
+
+
+        console.log(
+            "Raw API response:",
+            text
+        );
+
+
+        if (!text.trim()) {
+
+            throw new Error(
+                "Backend returned an empty response."
+            );
+
+        }
+
+
+        let data;
+
+
+        try {
+
+            data =
+                JSON.parse(text);
+
+        }
+        catch (jsonError) {
+
+            console.error(
+                "Invalid JSON:",
+                text
+            );
+
+            throw new Error(
+                "Backend did not return valid JSON."
+            );
+
+        }
+
+
+        console.log(
+            "Parsed API data:",
+            data
+        );
+
+
+        /* =================================================
+           API ERROR
+        ================================================= */
+
+        if (
+            !data ||
+            data.success !== true
+        ) {
+
+            throw new Error(
+                data &&
+                data.message
+                    ? data.message
+                    : "Backend returned success=false."
+            );
+
+        }
+
+
+        /* =================================================
+           RESULTS ARRAY
+        ================================================= */
+
+        const results =
+            Array.isArray(
+                data.results
+            )
+                ? data.results
+                : [];
+
+
+        console.log(
+            "Number of results:",
+            results.length
+        );
+
+
+        /* =================================================
+           SUMMARY
+        ================================================= */
+
+        document.getElementById(
+            "totalResults"
+        ).textContent =
+            results.length;
+
+
+        let totalCorrect = 0;
+
+        let totalScore = 0;
+
+
+        results.forEach(
+            function(result) {
+
+                totalCorrect +=
+                    Number(
+                        result.correct_answers || 0
+                    );
+
+
+                totalScore +=
+                    Number(
+                        result.score || 0
+                    );
+
+            }
+        );
+
+
+        document.getElementById(
+            "totalCorrect"
+        ).textContent =
+            totalCorrect;
+
+
+        document.getElementById(
+            "averageScore"
+        ).textContent =
+            results.length > 0
+                ? (
+                    totalScore /
+                    results.length
+                ).toFixed(2) + "%"
+                : "—";
+
+
+        /* =================================================
+           NO RESULTS
+        ================================================= */
+
+        if (results.length === 0) {
+
+            resultsBody.innerHTML = `
+
+                <tr>
+
+                    <td
+                        colspan="8"
+                        class="empty"
+                    >
+
+                        No student has completed
+                        an examination yet.
+
+                    </td>
+
+                </tr>
+
+            `;
+
+            return;
+
+        }
+
+
+        /* =================================================
+           BUILD TABLE
+        ================================================= */
+
+        let html = "";
+
+
+        results.forEach(
+            function(result) {
+
+
+                /*
+                 * Student information
+                 */
+
+                const studentName =
+                    result.student_name ||
+                    "Unknown Student";
+
+
+                const studentId =
+                    result.student_id ||
+                    "—";
+
+
+                const studentEmail =
+                    result.student_email ||
+                    "";
+
+
+                /*
+                 * Exam information
+                 */
+
+                const examName =
+                    result.exam_name ||
+                    "Unknown Exam";
+
+
+                /*
+                 * Numbers
+                 */
+
+                const totalQuestions =
+                    Number(
+                        result.total_questions || 0
+                    );
+
+
+                const correct =
+                    Number(
+                        result.correct_answers || 0
+                    );
+
+
+                const wrong =
+                    Number(
+                        result.wrong_answers || 0
+                    );
+
+
+                const score =
+                    Number(
+                        result.score || 0
+                    );
+
+
+                /*
+                 * Ability
+                 */
+
+                const ability =
+                    result.ability_level ||
+                    "Not Available";
+
+
+                /*
+                 * Completion date
+                 */
+
+                const completed =
+                    result.completed_at ||
+                    "";
+
+
+                /*
+                 * Build row
+                 */
+
+                html += `
+
+                    <tr>
+
+                        <td>
+
+                            <div class="student-name">
+
+                                ${escapeHtml(
+                                    studentName
+                                )}
+
+                            </div>
+
+                            <div class="student-id">
+
+                                ID:
+                                ${escapeHtml(
+                                    studentId
+                                )}
+
+                            </div>
+
+                            ${
+                                studentEmail
+                                    ? `
+                                        <div
+                                            class="student-email"
+                                        >
+
+                                            ${escapeHtml(
+                                                studentEmail
+                                            )}
+
+                                        </div>
+                                    `
+                                    : ""
+                            }
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="exam-name">
+
+                                ${escapeHtml(
+                                    examName
+                                )}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            ${totalQuestions}
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="correct">
+
+                                ${correct}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="wrong">
+
+                                ${wrong}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="score">
+
+                                ${score}%
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="ability-badge">
+
+                                ${escapeHtml(
+                                    ability
+                                )}
+
+                            </span>
+
+                        </td>
+
+
+                        <td>
+
+                            <span class="completed-badge">
+
+                                Completed
+
+                            </span>
+
+                            <div class="completed-time">
+
+                                ${escapeHtml(
+                                    formatDate(
+                                        completed
+                                    )
+                                )}
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+
+                `;
+
+            }
+        );
+
+
+        /*
+         * Update table in one operation.
+         */
+
+        resultsBody.innerHTML =
+            html;
+
+
+    }
+    catch (error) {
+
+        console.error(
+            "Results loading failed:",
+            error
+        );
+
+
+        /*
+         * Do not erase the summary
+         * if an automatic refresh fails.
+         */
+
+        resultsBody.innerHTML = `
+
+            <tr>
+
+                <td
+                    colspan="8"
+                    class="error"
+                >
+
+                    <strong>
+                        Failed to load examination results.
+                    </strong>
+
+                    <br><br>
+
+                    ${escapeHtml(
+                        error.message
+                    )}
+
+                    <br><br>
+
+                    Backend API:
+
+                    <br>
+
+                    <strong>
+                        ../backend/admin/live-results.php
+                    </strong>
+
+                </td>
+
+            </tr>
+
+        `;
+
+    }
+
+}
+
+
+
+/* =========================================================
+   FIRST LOAD
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        loadResults();
+
+    }
+);
+
+
+
+/* =========================================================
+   AUTO REFRESH
+========================================================= */
+
+setInterval(
+    loadResults,
+    5000
+);
+
+</script>
+
+
+</body>
+
+</html>
